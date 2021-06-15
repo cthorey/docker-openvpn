@@ -6,7 +6,7 @@ services:
     image: myvpn
     container_name: openvpn
     ports:
-      - "3000:1194/udp"
+      - "3000:3000/udp"
     restart: always
     volumes:
       - ./openvpn-data/conf:/etc/openvpn

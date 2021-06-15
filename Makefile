@@ -5,7 +5,8 @@ SHELL := bash
 .SUFFIXES:
 IMAGE = myvpn
 VERSION = latest
-SERVERIP = 138.68.177.67
+SERVERIP = 91.167.199.220
+PORT = 3000
 USER = laptop
 
 .PHONY: help
@@ -23,7 +24,7 @@ build: ## Build the image
 .PHONY: init_certif
 init_certif: ## Init the certificates
 	$(info *** init certificate)
-	@docker-compose run --rm openvpn ovpn_genconfig -u udp://$(SERVERIP)
+	@docker-compose run --rm openvpn ovpn_genconfig -u udp://$(SERVERIP):$(PORT)
 	@docker-compose run --rm openvpn ovpn_initpki
 	@sudo chown -R $(whoami): ./openvpn-data
 
