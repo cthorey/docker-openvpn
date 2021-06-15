@@ -1,0 +1,12 @@
+version: '2'
+services:
+  openvpn:
+    cap_add:
+      - NET_ADMIN
+    image: myvpn
+    container_name: openvpn
+    ports:
+      - "3000:1194/udp"
+    restart: always
+    volumes:
+      - ./openvpn-data/conf:/etc/openvpn
